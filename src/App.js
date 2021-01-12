@@ -2,6 +2,8 @@ import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
+import './components/Todo.css'
+
 
 
 
@@ -29,7 +31,7 @@ constructor(){
 handleItemAdd = (itemName) => {
   const item = {
     task: itemName,
-    id: Math.random(),
+    id: this.state.todos.length,
     completed: false
   };
 
@@ -54,9 +56,9 @@ handleItemToggle = (itemId) => {
   });
 }
 
-handleCompleted = () => {
+handleItemCompleted = () => {
   const newTodos = this.state.todos.filter(item => {
-    return(item.completed);
+    return(!item.completed);
   })
   this.setState({
     todos: newTodos

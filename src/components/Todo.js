@@ -1,5 +1,5 @@
 import React from 'react';
-import './Todo.css'
+
 
 
 const Todo = (props) => {
@@ -9,7 +9,7 @@ const Todo = (props) => {
     }
 
 return(
-    <div onClick={handleClick} className={`item${props.item.completed ? 'completed' : ''}`}>
+    <div onClick={handleClick} className={`item${props.item.completed ? '' : 'completed'}`}>
         <h2>{props.item.task}</h2>
     </div>
 )
