@@ -3,6 +3,8 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
 
+
+
 const todos = [
   {
     task:"Learn React Class Components",
@@ -11,7 +13,7 @@ const todos = [
   }
 ]
 
-console.log("hello world")
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -38,13 +40,36 @@ handleItemAdd = (itemName) => {
   });
 };
 
+handleItemToggle = (itemId) => {
+  this.setState({
+    todos: this.state.todos.map(item=>{
+      if(item.id === itemId) {
+        return {
+          ...item,
+          completed: !item.completed
+        }
+      }
+      return(item)
+    })
+  });
+}
+
+handleCompleted = () => {
+  const newTodos = this.state.todos.filter(item => {
+    return(item.completed);
+  })
+  this.setState({
+    todos: newTodos
+  })
+}
+
 
   render() {
     return (
-      <div>
+      <div className="App">
         <h1>My Daily To-Do List</h1>
         <TodoForm handleItemAdd={this.handleItemAdd} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} handleItemToggle={this.handleItemToggle} handleItemCompleted={this.handleItemCompleted} />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import React from 'react';
 
 class TodoForm extends React.Component {
@@ -16,7 +16,7 @@ class TodoForm extends React.Component {
         });
     }
 
-    handleSubmit = e => {
+    handleSubmit = (e) => {
         e.preventDefault();
         this.props.handleItemAdd(this.state.inputValue);
         this.setState({
@@ -29,7 +29,6 @@ class TodoForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
             <input value={this.state.inputValue} onChange={this.handleChanges} type="text" name="item"/>
             <button>Submit</button>
-            <button>Clear</button>
         </form>
 
     );
